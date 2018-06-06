@@ -20,5 +20,33 @@ public class StringPlay {
 		System.out.println("Changed text:");
 		System.out.println(text);
 	}
+	
+	/**
+	 * Add symbol set "addition" after the symbol with index "index" in text "text"
+	 * @param text
+	 * @param index
+	 * @param addition
+	 */
+	public static void addWord(String text, int index, String addition) {
+		//replacing all new lines "\n" with "|"
+		Pattern p2 = Pattern.compile("\\n");
+		Matcher m2 = p2.matcher(text);
+		text = m2.replaceAll("|");
+		//adding "addition" to the right place
+		Pattern p = Pattern.compile(".",Pattern.MULTILINE);
+		Matcher m = p.matcher(text);
+		StringBuilder sb = new StringBuilder();
+		while(m.find()) {
+			sb.append(m.group());
+			if(m.start()==index) sb.append(addition);
+		}
+		//replacing back "|" by new lines "\n"
+		text = sb.toString();
+		Pattern p3 = Pattern.compile("\\|");
+		Matcher m3 = p3.matcher(text);
+		text = m3.replaceAll("\n");
+		System.out.println("Changed text:");
+		System.out.println(text);
+	}
 
 }
