@@ -1,5 +1,7 @@
 package by.htp.stringtest.entity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -48,5 +50,62 @@ public class StringPlay {
 		System.out.println("Changed text:");
 		System.out.println(text);
 	}
+	/**
+	 * This method deletes all symbols "symbol" in the lines of "text" marked as "0"
+	 * This method adds symbol "symbol" to every position "insert_position"+1 in the lines of "text" marked as "1"
+	 * Position zero(position of marker) in this case does not count.
+	 * If a line is not marked "0" or "1" it is not changed.
+	 * @param text
+	 * @param symbol
+	 * @param insert_position
+	 */
+	public static void deleteOrAddSymbol(String text, String symbol, int insert_position) {
+		//Pattern to find "symbol" in "text"
+		String pat_p1 = "["+symbol+"]";
+		Pattern p1 = Pattern.compile(pat_p1);
+		
+		// Extracting lines from text and place them into ArrayList
+		Pattern p2 = Pattern.compile("^.*$",Pattern.MULTILINE);
+		Matcher m2 = p2.matcher(text);
+		List<String> arrLines = new ArrayList<String>();
+		while(m2.find()) {
+			arrLines.add(m2.group());	
+		}
+		
+		//Doing changes
+		for (int i = 0; i < arrLines.size(); i++) {
+			String string = arrLines.get(i);
+			System.out.println("Before:"+string);
+			if(string.charAt(0)=='0') {
+				string = p1.matcher(string).replaceAll("");
+				arrLines.remove(i);
+				arrLines.add(i, string);
+				System.out.println(string);
+			}
+			if(string.charAt(0)=='1') {
+				StringBuilder sb = new StringBuilder();
+				sb.append(string.charAt(0));
+				for (int j = 1; j < string.length(); j++) {
+					sb.append(string.charAt(j));
+					if(j%insert_position==0) {
+						sb.append(symbol);
+					}
+					
+				}
+				arrLines.remove(i);
+				arrLines.add(i, sb.toString());
+			}
+		}
+		
+		//Printing result
+		System.out.println("Changed text:");
+		for (String string : arrLines) {
+			System.out.println(string);
+		}
 
+	}
+
+	
+	
+	
 }

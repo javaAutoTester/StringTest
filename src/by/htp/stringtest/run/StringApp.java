@@ -25,7 +25,13 @@ public class StringApp {
          *удалить указанный символ везде, где он встречается, или вста-
          *вить его после k-гo символа.
 		 */
-
+		String text2 = "0 We all living i4 Americ9, America, America."
+				        + "\n1 No one living in China, China, China."
+				        + "\nI want to live in the mountings."
+				        + "\n0Who is living in Brasil.";
+		String symbol = "i";
+		int insert_position = 4;
+		StringPlay.deleteOrAddSymbol(text2, symbol, insert_position);
 	}
    
 }
