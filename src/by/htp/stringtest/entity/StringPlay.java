@@ -106,6 +106,21 @@ public class StringPlay {
 		System.out.println(sb);
 	}
 
+	/**
+	 * Deletes all words of length "word_length" in a text "text" that start with consonant.
+	 * The SPACE after word is also to delete. 
+	 * @param text
+	 * @param word_length
+	 */
+	public static void deleteWords(String text, int word_length) {
+		String num = new Integer(word_length-1).toString();
+		String pattern = "\\b[bcdfghjklmnpqrstvwxzBCDFGHJKLMNPQRSTVWXZ][\\w]{"+num+"}\\b[ ]";
+		Pattern p = Pattern.compile(pattern, Pattern.MULTILINE);
+		Matcher m = p.matcher(text);
+		String text_changed = m.replaceAll("");
+		System.out.println("Changed text:");
+		System.out.println(text_changed );
+	}
 	
 	
 	
