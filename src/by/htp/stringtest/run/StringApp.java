@@ -6,11 +6,13 @@ public class StringApp {
 
 	public static void main(String[] args) {
 		
-		/*
+		/* Git section
 		 * git remote add origin git@github.com:javaAutoTester/StringTest.git
          * git push -u origin master
          * 
          * git remote add origin https://github.com/javaAutoTester/StringTest.git
+         * 
+         * cd /home/papa/RepoGit/StringTest
 		 */
 		
 		/* Task 1
