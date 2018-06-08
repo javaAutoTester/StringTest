@@ -99,10 +99,11 @@ public class StringPlay {
 		
 		//Printing result
 		System.out.println("Changed text:");
+		StringBuilder sb = new StringBuilder();
 		for (String string : arrLines) {
-			System.out.println(string);
+			sb.append(string).append("\n");
 		}
-
+		System.out.println(sb);
 	}
 
 	
